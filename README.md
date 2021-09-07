@@ -7,4 +7,4 @@ Iglesias Nahuel\
 Loureiro Alejo\
 Martínez López Lautaro G\
 Ramirez Miers Carlos\
-Stabile Juan Carlos F.\
+Stabile Juan Carlos F.
