@@ -2,7 +2,7 @@
 Proyecto de elementos de ingeniería de soft
 
 # Integrantes
-> Giulianetti Javier
+> Giulianetti Javier\
 Iglesias Nahuel
 Loureiro Alejo
 Martínez López Lautaro G
