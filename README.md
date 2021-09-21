@@ -20,3 +20,6 @@ https://ramircaa.atlassian.net/jira/software/projects/MAXISTOCK/boards/1/backlog
 
 # Confluence
 https://ramircaa.atlassian.net/wiki/home?ep_click_type=primary
+
+# User History / MVP
+https://metroretro.io/board/LBBGITCTKS5X#
