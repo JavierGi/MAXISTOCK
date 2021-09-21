@@ -23,3 +23,6 @@ https://ramircaa.atlassian.net/wiki/home?ep_click_type=primary
 
 # User Story Mapping/ MVP
 https://metroretro.io/board/LBBGITCTKS5X#
+
+# Documentación de proyecto
+https://drive.google.com/drive/folders/120L8VHbxkD9SVNzd4A72S5-XX18fIai7?usp=sharing
