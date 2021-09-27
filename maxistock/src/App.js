@@ -1,8 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
-import 'C:/Users/Lautarito/Desktop/Facultad/IngSoft/MAXISTOCK/maxistock/src/components/AddProduct';
-import { AddProduct } from 'C:/Users/Lautarito/Desktop/Facultad/IngSoft/MAXISTOCK/maxistock/src/components/AddProduct';
-import { TablaDeContenidos } from 'C:/Users/Lautarito/Desktop/Facultad/IngSoft/MAXISTOCK/maxistock/src/components/TablaDeContenidos';
+import './components/AddProduct';
+import { AddProduct } from './components/AddProduct';
+import { TablaDeContenidos } from './components/TablaDeContenidos';
 
 function App() {
   return (
