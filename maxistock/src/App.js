@@ -1,25 +1,24 @@
 import logo from './logo.svg';
 import './App.css';
+import 'C:/Users/Lautarito/Desktop/Facultad/IngSoft/MAXISTOCK/maxistock/src/components/AddProduct';
+import { AddProduct } from 'C:/Users/Lautarito/Desktop/Facultad/IngSoft/MAXISTOCK/maxistock/src/components/AddProduct';
+import { TablaDeContenidos } from 'C:/Users/Lautarito/Desktop/Facultad/IngSoft/MAXISTOCK/maxistock/src/components/TablaDeContenidos';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <body>
+        <div className="title">
+            MAXISTOCK
+        </div>
+        <AddProduct></AddProduct>
+        <div>
+          <TablaDeContenidos></TablaDeContenidos>
+        </div>
+      </body>
     </div>
   );
 }
 
 export default App;
+
