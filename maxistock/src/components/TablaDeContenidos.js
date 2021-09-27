@@ -31,7 +31,7 @@ export function TablaDeContenidos() {
                     return <tr>
                         <td>{producto.nombre}</td>
                         <td>{producto.precio}</td>
-                        <td>{producto.cantStock}</td>
+                        <td>{producto.cantidad}</td>
                     </tr>
                 })
             }
