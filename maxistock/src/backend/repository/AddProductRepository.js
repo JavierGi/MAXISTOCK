@@ -1,3 +1,4 @@
+import { connect } from "../../MySQLDAO";
 
 const queryStatement = `INSERT INTO items (id, nombre, precio, cantidad) VALUES `;
 
@@ -10,5 +11,8 @@ function AddProductRepository(newProduct) {
         String(newProduct.quantity) 
     + ");";
 
+    connect()
     query(queryStatement + queryParams);
 };
+
+export default AddProductRepository;
