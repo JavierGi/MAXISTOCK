@@ -1,4 +1,4 @@
-import { connect, query, disconnect } from './MySQLDAO';
+import { connect, query, disconnect } from '../MySQLDAO';
 
 const dbTestName = 'maxistock';
 
