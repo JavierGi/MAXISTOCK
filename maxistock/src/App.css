@@ -2,6 +2,18 @@
   text-align: center;
 }
 
+.title {
+  color: white;
+  background-color: #282c34;
+  font-size: 50px;
+}
+
+.AddProduct {
+  color: white;
+  background-color: #282c34;
+  font-size: 50px;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
