@@ -7,7 +7,6 @@ import { TablaDeContenidos } from './components/TablaDeContenidos';
 function App() {
   return (
     <div className="App">
-      <body>
         <div className="title">
             MAXISTOCK
         </div>
@@ -15,7 +14,6 @@ function App() {
         <div>
           <TablaDeContenidos></TablaDeContenidos>
         </div>
-      </body>
     </div>
   );
 }

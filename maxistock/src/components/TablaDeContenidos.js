@@ -21,6 +21,7 @@ export function TablaDeContenidos() {
            <button onClick={recuperarMasVendidos}>Mostrar más vendidos</button>
         }
         <table border="1 px solid black" align="center" margin="5 px">
+          <tbody>
             <tr>
                 <th>Nombre</th>
                 <th>Precio</th>
@@ -35,6 +36,7 @@ export function TablaDeContenidos() {
                     </tr>
                 })
             }
+          </tbody>
         </table>
         </div>
     )
