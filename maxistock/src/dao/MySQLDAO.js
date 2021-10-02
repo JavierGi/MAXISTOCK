@@ -7,6 +7,7 @@ const connection = mysql.createConnection({
 });
 
 export const connect = () => connection.connect();
+export const use = () => query('USE maxistock;');
 
 export const query = (sql) => {
     return new Promise( (resolve, reject) => {
