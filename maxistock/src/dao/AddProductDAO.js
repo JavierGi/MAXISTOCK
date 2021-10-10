@@ -1,18 +1,16 @@
-import { connect } from "../MySQLDAO";
+import { use, connect, query, disconnect } from "./MySQLDAO";
 
-const queryStatement = `INSERT INTO items (id, nombre, precio, cantidad) VALUES `;
+const queryStatement = `INSERT INTO maxistock.stock (codigo, nombre, precio, cantidad) VALUES `;
 
 function AddProductDAO(newProduct) {
 
-    const queryParams = "(" + 
-        String(newProduct.code) + ", " + 
-        String(newProduct.name) + ", " + 
-        String(newProduct.price) + ", " + 
-        String(newProduct.quantity) 
-    + ");";
-
-    connect()
-    query(queryStatement + queryParams);
+    const queryParams = `(${newProduct.code}, 
+                         "${newProduct.name}", 
+                          ${newProduct.price}, 
+                          ${newProduct.quantity})`;
+    
+    query(queryStatement+queryParams);
+    
 };
 
 export default AddProductDAO;
