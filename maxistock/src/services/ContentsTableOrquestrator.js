@@ -2,7 +2,7 @@ import {query, connect, disconnect} from "../dao/MySQLDAO";
 
 function GetEverything() {
     connect
-    query("SELECT * FROM stock")
+    query("SELECT * FROM maxistock.stock")
     disconnect
 }
 

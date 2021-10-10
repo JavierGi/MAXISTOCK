@@ -4,9 +4,11 @@ const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'root',
+    //database: 'maxistock'
 });
 
 export const connect = () => connection.connect();
+
 export const use = () => query('USE maxistock;');
 
 export const query = (sql) => {
