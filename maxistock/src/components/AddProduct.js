@@ -6,7 +6,7 @@ export function AddProduct() {
 
     const handleChange = name => event => {
         setData(prevState => ({...prevState, [name]: event.target.value}));
-    };
+    }
 
     const handleSubmit = () => {
         
