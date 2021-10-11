@@ -11,5 +11,11 @@ function GetMostBuyed() {
     query("SELECT nombre, cantidad, precio FROM stock JOIN (SELECT * FROM ventas ORDER BY cantidad) ON codigo_producto = codigo")
 }
 
+function GetProductByCode(code) {
+    connect
+    return query(`SELECT * FROM stock WHERE codigo = ${code}`)
+}
+
 export default GetEverything;
 export default GetMostBuyed;
+export default GetProductByCode;
