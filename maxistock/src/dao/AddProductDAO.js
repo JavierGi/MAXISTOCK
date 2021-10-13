@@ -4,7 +4,7 @@ const queryStatement = `INSERT INTO maxistock.stock (nombre, precio, cantidad) V
 
 function AddProductDAO(newProduct) {
 
-    const queryParams = `("${newProduct.name}", 
+    const queryParams = `(${newProduct.name}, 
                           ${newProduct.price}, 
                           ${newProduct.quantity})`;
     
@@ -12,6 +12,5 @@ function AddProductDAO(newProduct) {
     
 };
 
-// export default AddProductDAO;
 module.exports = { AddProductDAO };
 
