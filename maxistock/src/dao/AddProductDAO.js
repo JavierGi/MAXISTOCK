@@ -12,4 +12,6 @@ function AddProductDAO(newProduct) {
     
 };
 
-export default AddProductDAO;
+// export default AddProductDAO;
+module.exports = { AddProductDAO };
+

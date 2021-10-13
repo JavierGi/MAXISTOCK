@@ -1,6 +1,6 @@
-import NewProductDTO from "../dtos/NewProductDTO";
-import AddProductDAO from "../dao/AddProductDAO";
-import InvalidParametersException from "../exceptions/InvalidParametersException";
+import { NewProductDTO } from "../dtos/NewProductDTO";
+import { AddProductDAO } from "../dao/AddProductDAO";
+import { InvalidParametersException } from "../exceptions/InvalidParametersException";
 
 function AddProductService(name, price, quantity) {
     if (price <= 0) {

@@ -6,4 +6,4 @@ function NewProductDTO(newName, newPrice, newQuantity) {
     };
 };
 
-export default NewProductDTO;
+module.exports = { NewProductDTO };
