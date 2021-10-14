@@ -4,3 +4,5 @@ class InvalidParametersException extends Error {
         this.name = "InvalidParameters"
     }
 }
+
+module.exports = { InvalidParametersException };
