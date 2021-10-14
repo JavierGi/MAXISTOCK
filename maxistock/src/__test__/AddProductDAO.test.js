@@ -1,6 +1,6 @@
 import { use, connect, query, disconnect } from '../dao/MySQLDAO';
-import AddProductDAO from '../dao/AddProductDAO';
-import NewProductDTO from '../dtos/NewProductDTO';
+import { AddProductDAO } from '../dao/AddProductDAO';
+import { NewProductDTO } from '../dtos/NewProductDTO';
 
 
 
@@ -11,7 +11,7 @@ beforeEach(() => {
 
 test('Add 1 product', () => {
     
-    var nuevoProducto = NewProductDTO(1, "item1", 1, 100)
+    var nuevoProducto = NewProductDTO("item1", 1, 100)
     AddProductDAO(nuevoProducto)
     query(`
         SELECT * FROM maxistock.stock;
@@ -22,9 +22,9 @@ test('Add 1 product', () => {
 
 test('Add multiple products', () => {
     
-    var nuevoProducto = NewProductDTO(1, "item1", 1, 100)
-    var nuevoProducto2 = NewProductDTO(2, "item2", 1, 100)
-    var nuevoProducto3 = NewProductDTO(3, "item3", 1, 100)
+    var nuevoProducto = NewProductDTO("item1", 1, 100)
+    var nuevoProducto2 = NewProductDTO("item2", 1, 100)
+    var nuevoProducto3 = NewProductDTO("item3", 1, 100)
 
     AddProductDAO(nuevoProducto)
     AddProductDAO(nuevoProducto2)
