@@ -4,3 +4,5 @@ class InsufficientStockException extends Error {
         this.name = "InsufficientStock"
     }
 }
+
+module.exports = { InsufficientStockException };

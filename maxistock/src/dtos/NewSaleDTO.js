@@ -1,10 +1,9 @@
-function NewSaleDTO(newCode, newProductCode, newDate, newQuantity) {
+function NewSaleDTO(newProductCode, newDate, newQuantity) {
     return {
-        code: newCode,
         productCode: newProductCode,  
         date: newDate, 
         quantity: newQuantity
     };
 };
 
-export default NewSaleDTO;
+module.exports = { NewSaleDTO };
