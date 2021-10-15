@@ -4,15 +4,12 @@ const queryStatement = `INSERT INTO maxistock.ventas (codigo_producto, fecha, ca
 
 function AddSaleDAO(newSale) {
 
-    connect();
-
     const queryParams = `("${newSale.productCode}", 
                           ${newSale.date}, 
                           ${newSale.quantity})`;
     
     query(queryStatement+queryParams);
-    disconnect()
     
 };
 
-export default AddSaleDAO;
+module.exports = { AddSaleDAO };
