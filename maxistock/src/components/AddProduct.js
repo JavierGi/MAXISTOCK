@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { AddProductService }from '../services/AddProductService';
 
 export function AddProduct() {
 
@@ -8,8 +9,9 @@ export function AddProduct() {
         setData(prevState => ({...prevState, [name]: event.target.value}));
     };
 
-    const handleSubmit = () => {
-        
+    const handleSubmit = event => {
+      AddProductService(data.nombre, data.precio, data.cantidad);
+      event.preventDefault();
     }
 
     return (
@@ -51,9 +53,7 @@ export function AddProduct() {
                 placeholder="Cantidad"
                 onChange={handleChange("cantidad")}/>
 
-                <button type="submit">
-                    Ingresar Producto
-                </button>
+                <input type="submit" value="Ingresar Producto" />
             </form>
         </div>
     );
