@@ -1,17 +1,18 @@
-import React, { useState, useEffect} from 'react';
-import { GetStockService } from '../services/AddProductService';
+import React, { useState, useEffect, useContext } from 'react';
+import { StatusContext } from '../components/StatusContext';
+
 
 export function TablaDeContenidos() {
 
+    const { status, action } = useContext(StatusContext);
     const [mostrandoMasVendidos, setMostrando] = useState(false)
-    const [contenidos, setContenidos] = useState(GetStockService())
-    const [actualizado, setActualizado] = useState(true)
-
+    const [contenidos, setContenidos] = useState(status.stock)
+    const [count, setCount] = useState(status.count);
 
     useEffect(() => {
-        setContenidos(GetStockService());
-        setActualizado(true);
-    }, []);
+        setContenidos(status.stock);
+    }, [status.count]);
+
 
     const recuperarTodos = () => {
         setMostrando(false)
@@ -22,8 +23,11 @@ export function TablaDeContenidos() {
     }
 
     const actualizarListado = () => {
-        setActualizado(false);
+        setCount(status.count);
+        setContenidos(status.stock);
     }
+
+    action.informStock = actualizarListado;
 
     return(
         <div>
@@ -34,7 +38,7 @@ export function TablaDeContenidos() {
            <button onClick={recuperarMasVendidos}>Mostrar más vendidos</button>
         }
            */}
-           <button onClick={actualizarListado}>Actualizar listado</button>
+      {/* <button onClick={actualizarListado}>Actualizar listado</button> */}
         <table border="1 px solid black" align="center" margin="1 px">
           <tbody>
             <tr>

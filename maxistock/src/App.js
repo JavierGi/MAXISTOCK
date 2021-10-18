@@ -1,5 +1,6 @@
 import './App.css';
 import './components/AddProduct';
+import { StatusProvider } from './components/StatusContext';
 import { AddProduct } from './components/AddProduct';
 import { TablaDeContenidos } from './components/TablaDeContenidos';
 
@@ -10,8 +11,10 @@ function App() {
         <div className="title">
             MAXISTOCK
         </div>
-        <AddProduct /> 
-        <TablaDeContenidos />
+        <StatusProvider>
+          <AddProduct /> 
+          <TablaDeContenidos />
+        </StatusProvider>
     </div>
   );
 }

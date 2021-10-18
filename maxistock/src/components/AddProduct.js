@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
-import { AddProductService }from '../services/AddProductService';
+import React, { useState, useContext } from 'react';
+import { StatusContext } from '../components/StatusContext';
+import { AddProductService, GetStockService }from '../services/AddProductService';
 
 export function AddProduct() {
 
+    const { status, action } = useContext(StatusContext);
     const [data, setData] = useState({nombre:"",codigo: "", precio: "", cantidad:""});
 
     const handleChange = name => event => {
@@ -11,6 +13,9 @@ export function AddProduct() {
 
     const handleSubmit = event => {
       AddProductService(data.nombre, data.precio, data.cantidad);
+      action.setStock(GetStockService());
+      status.count = status.count + 1;
+      action.informStock();
       event.preventDefault();
     }
 

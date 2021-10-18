@@ -16,6 +16,14 @@ export function TablaDeContenidos() {
         GetMostBuyed.then(res => setContenidos(res))
     }
 
+    const actualizarTabla = () => {
+      if (mostrandoMasVendidos) {
+        recuperarMasVendidos()
+      } else {
+        recuperarTodos()
+      }
+    }
+
     return(
         <div>
         {
