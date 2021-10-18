@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "./ContentsTable.css"
 import {GetEverything, GetMostBuyed} from '../services/ContentsTableOrquestrator';
 
@@ -7,43 +7,45 @@ export function ContentsTable() {
     const [mostrandoMasVendidos, setMostrando] = useState(false)
     const [contenidos, setContenidos] = useState([{nombre:"test",codigo: "5502", precio: "14", cantidad:"12"}, {nombre:"test2",codigo: "552", precio: "141", cantidad:"122"}])
     const [selectedId, setSelectedId] = useState()
-    //const [selectedTr, setSelectedTr] = useState(document.getElementById("tr"))
-    var selectedTr = 0;
+    //const [selectedTr, setSelectedTr] = useState()
+    
+    /*useEffect (() => { 
+        setSelectedTr(document.createElement('DIV'))
+        console.log("ok") 
+    }, [])*/
 
-    const recuperarTodos = () => {
+    function recuperarTodos() {
         setMostrando(false)
-        GetEverything.then(res => setContenidos(res))
+        //GetEverything.then(res => setContenidos(res))
     }
 
-    const recuperarMasVendidos = () => {
+    function recuperarMasVendidos() {
         setMostrando(true)
-        GetMostBuyed.then(res => setContenidos(res))
+        //GetMostBuyed.then(res => setContenidos(res))
     }
 
-    const test = () => {
+    function test () {
         console.log(selectedId)
-        console.log(selectedTr)
+        //console.log(selectedTr)
     }
     
-    const select = event => {
+    function select (event) {
         let target = event.target.closest('tr')
         if (!target) return;
-        highlight(target)
+        //highlight(target)
         setSelectedId(target.id)
     }
 
-    const highlight = tr => {
-        console.log(selectedTr)
-        if (selectedTr) {
+    /*function highlight(tr) {
+        console.log(selectedTr)        
+        if (selectedTr.tagName === 'TR') {
             selectedTr.classList.remove('highlight');
             console.log("eliminando highlight")
         }
-        selectedTr = tr;
-        tr = selectedTr;
-        //setSelectedTr(tr)
-        selectedTr.classList.add('highlight');
+        setSelectedTr(tr)
         console.log(selectedTr)
-    }
+        selectedTr.classList.add('highlight');
+    }*/
 
     return(
         <div>
@@ -58,6 +60,7 @@ export function ContentsTable() {
                 <th>Nombre</th>
                 <th>Precio</th>
                 <th>Cantidad en stock</th>
+                <th>Seleccionar producto a vender</th>
             </tr>
             {
                 contenidos.map(producto => {
@@ -65,6 +68,7 @@ export function ContentsTable() {
                         <td>{producto.nombre}</td>
                         <td>{producto.precio}</td>
                         <td>{producto.cantidad}</td>
+                        <td><input type = "radio" name = "myRadio" onClick = {select}></input></td>
                     </tr>
                 })
             }
