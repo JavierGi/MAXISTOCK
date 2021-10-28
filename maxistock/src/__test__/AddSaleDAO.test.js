@@ -1,24 +1,21 @@
 import { use, connect, query, disconnect } from '../dao/MySQLDAO';
 import { AddSaleDAO } from '../dao/AddSaleDAO';
 import { NewSaleDTO } from '../dtos/NewSaleDTO';
-
+import { truncateVentas, getVentas } from '../dao/VentasDAO';
 
 
 beforeEach(() => {
-    query(`TRUNCATE TABLE maxistock.ventas;`);
+  truncateVentas();
 });
 
 
 test('Add 1 sale', () => {
     
     var fechaActual = Date.now();
-    var nuevaVenta = NewSaleDTO(123, fechaActual, 100)
-    AddSaleDAO(nuevaVenta)
-    query(`
-        SELECT * FROM maxistock.ventas;
-    `).then(res => {
-        expect(res).toMatchObject([{codigo: 1, codigo_producto: 123, fecha: fechaActual, cantidad: 100}]);
-    });
+    var nuevaVenta = NewSaleDTO(123, fechaActual, 100);
+    AddSaleDAO(nuevaVenta);
+
+    expect(getVentas().length).toBe(1);
 });
 
 test('Add multiple products', () => {
@@ -32,9 +29,9 @@ test('Add multiple products', () => {
     AddSaleDAO(nuevaVenta2)
     AddSaleDAO(nuevaVenta3)
 
-    query(`
-        SELECT COUNT(*) FROM maxistock.ventas;
-    `).then(res => {
-        expect(res)==3;
-    });
+    const ventas = getVentas()
+    expect(ventas.length).toBe(3);
+    expect(ventas[2]).toMatchObject(
+      {id: 3, codigo: 789, fecha: fechaActual, cantidad: 100});
+    
 });

@@ -1,8 +1,8 @@
 function NewSaleDTO(newProductCode, newDate, newQuantity) {
     return {
-        productCode: newProductCode,  
-        date: newDate, 
-        quantity: newQuantity
+        codigo: newProductCode,  
+        fecha: newDate, 
+        cantidad: newQuantity
     };
 };
 

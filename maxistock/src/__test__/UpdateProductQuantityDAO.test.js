@@ -2,10 +2,10 @@ import { use, connect, query, disconnect } from '../dao/MySQLDAO';
 import { AddProductDAO } from '../dao/AddProductDAO';
 import { NewProductDTO } from '../dtos/NewProductDTO';
 import { UpdateProductQuantityDAO } from '../dao/UpdateProductQuantityDAO';
-
+import {  truncateStock , getProductByCode } from '../dao/StockDAO';
 
 beforeEach(() => {
-    query(`TRUNCATE TABLE maxistock.stock;`);
+  truncateStock();
 });
 
 
@@ -16,10 +16,6 @@ test('Modify product quantity', () => {
 
     UpdateProductQuantityDAO(200, 1)
 
-    query(`
-        SELECT * FROM maxistock.stock;
-    `).then(res => {
-        expect(res).toMatchObject([{codigo: 1, nombre: "item1", cantidad: 200, precio: 1}]);
-    });
+    expect(getProductByCode(1).cantidad).toBe(200);
 
 });

@@ -16,7 +16,7 @@ function SellProductService(code, quantity) {
         throw new InsufficientStockException(`There is not enough stock of product ${code}`)
     }
 
-    var newSale = NewSaleDTO(code, Date.now, quantity)
+    var newSale = NewSaleDTO(code, Date.now(), quantity)
 
     UpdateProductQuantityDAO((productToSell.cantidad - quantity), code)
     AddSaleDAO(newSale)

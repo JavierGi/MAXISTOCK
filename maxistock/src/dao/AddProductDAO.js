@@ -1,14 +1,9 @@
 import { use, connect, query, disconnect } from "./MySQLDAO";
-
-const queryStatement = `INSERT INTO maxistock.stock (nombre, precio, cantidad) VALUES `;
+import { stock, add } from './StockDAO'
 
 function AddProductDAO(newProduct) {
 
-    const queryParams = `(${newProduct.name}, 
-                          ${newProduct.price}, 
-                          ${newProduct.quantity})`;
-    
-    query(queryStatement+queryParams);
+    add(newProduct);
     
 };
 

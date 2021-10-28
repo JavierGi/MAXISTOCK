@@ -1,15 +1,8 @@
 import { use, connect, query, disconnect } from "./MySQLDAO";
-
-const queryStatement = `INSERT INTO maxistock.ventas (codigo_producto, fecha, cantidad) VALUES `;
+import { add } from '../dao/VentasDAO';
 
 function AddSaleDAO(newSale) {
-
-    const queryParams = `("${newSale.productCode}", 
-                          ${newSale.date}, 
-                          ${newSale.quantity})`;
-    
-    query(queryStatement+queryParams);
-    
+  add(newSale);
 };
 
 module.exports = { AddSaleDAO };

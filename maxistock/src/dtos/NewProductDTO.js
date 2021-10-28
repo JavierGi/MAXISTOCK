@@ -1,8 +1,8 @@
 function NewProductDTO(newName, newPrice, newQuantity) {
     return {
-        name: newName,  
-        price: newPrice, 
-        quantity: newQuantity
+        nombre: newName,  
+        precio: newPrice, 
+        cantidad: newQuantity
     };
 };
 
