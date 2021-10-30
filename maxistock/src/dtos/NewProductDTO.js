@@ -1,10 +1,9 @@
-function NewProductDTO(newCode, newName, newPrice, newQuantity) {
+function NewProductDTO(newName, newPrice, newQuantity) {
     return {
-        code: newCode,
-        name: newName,  
-        price: newPrice, 
-        quantity: newQuantity
+        nombre: newName,  
+        precio: newPrice, 
+        cantidad: newQuantity
     };
 };
 
-export default NewProductDTO;
+module.exports = { NewProductDTO };
