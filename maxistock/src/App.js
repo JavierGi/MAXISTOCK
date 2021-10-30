@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import './components/AddProduct';
 import { AddProduct } from './components/AddProduct';
-import { TablaDeContenidos } from './components/TablaDeContenidos';
+import { ContentsTable } from './components/ContentsTable';
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
         </div>
         <AddProduct></AddProduct>
         <div>
-          <TablaDeContenidos></TablaDeContenidos>
+          <ContentsTable></ContentsTable>
         </div>
     </div>
   );
