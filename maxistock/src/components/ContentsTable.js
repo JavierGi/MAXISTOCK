@@ -7,12 +7,6 @@ export function ContentsTable() {
     const [mostrandoMasVendidos, setMostrando] = useState(false)
     const [contenidos, setContenidos] = useState([{nombre:"test",codigo: "5502", precio: "14", cantidad:"12"}, {nombre:"test2",codigo: "552", precio: "141", cantidad:"122"}])
     const [selectedId, setSelectedId] = useState()
-    //const [selectedTr, setSelectedTr] = useState()
-    
-    /*useEffect (() => { 
-        setSelectedTr(document.createElement('DIV'))
-        console.log("ok") 
-    }, [])*/
 
     function recuperarTodos() {
         setMostrando(false)
@@ -23,29 +17,12 @@ export function ContentsTable() {
         setMostrando(true)
         //GetMostBuyed.then(res => setContenidos(res))
     }
-
-    function test () {
-        console.log(selectedId)
-        //console.log(selectedTr)
-    }
     
     function select (event) {
         let target = event.target.closest('tr')
         if (!target) return;
-        //highlight(target)
         setSelectedId(target.id)
     }
-
-    /*function highlight(tr) {
-        console.log(selectedTr)        
-        if (selectedTr.tagName === 'TR') {
-            selectedTr.classList.remove('highlight');
-            console.log("eliminando highlight")
-        }
-        setSelectedTr(tr)
-        console.log(selectedTr)
-        selectedTr.classList.add('highlight');
-    }*/
 
     return(
         <div>
@@ -74,7 +51,6 @@ export function ContentsTable() {
             }
           </tbody>
         </table>
-        <button onClick = {test}>test</button>
         </div>
     )
 }
