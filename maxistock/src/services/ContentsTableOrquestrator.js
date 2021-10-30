@@ -1,15 +1,17 @@
-import {query, connect, disconnect} from "../dao/MySQLDAO";
+import { stock , getProductByCode } from '../dao/StockDAO';
 
-function GetEverything() {
-    connect
-    query("SELECT * FROM maxistock.stock")
-    disconnect
-}
+export function GetEverything() {
+  return stock;
+};
 
-function GetMostBuyed() {
-    connect
+/*function GetMostBuyed() {
+    connect()
     query("SELECT nombre, cantidad, precio FROM stock JOIN (SELECT * FROM ventas ORDER BY cantidad) ON codigo_producto = codigo")
-}
+    disconnect()
+};*/
 
-export default GetEverything;
-export default GetMostBuyed;
+export function GetProductByCode(code) {
+    return getProductByCode(code);
+};
+
+//module.exports = {GetEverything, GetProductByCode};

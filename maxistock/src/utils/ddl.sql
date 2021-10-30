@@ -10,7 +10,7 @@ CREATE TABLE stock (
         );
         
 CREATE TABLE ventas (
-			codigo INT NOT NULL AUTO_INCREMENT,
+	    codigo INT NOT NULL AUTO_INCREMENT,
             codigo_producto INT NOT NULL ,
             fecha DATETIME NOT NULL,
             cantidad INT NOT NULL,
