@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import "./ContentsTable.css"
 import {GetEverything, GetMostBuyed} from '../services/ContentsTableOrquestrator';
+import { RegisterSale } from './RegisterSale';
 
 export function ContentsTable() {
 
@@ -51,6 +52,7 @@ export function ContentsTable() {
             }
           </tbody>
         </table>
+        <RegisterSale codigo={selectedId}></RegisterSale>
         </div>
     )
 }
