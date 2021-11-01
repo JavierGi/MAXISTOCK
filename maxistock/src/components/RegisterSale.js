@@ -10,12 +10,13 @@ export function RegisterSale(props) {
         setData(prevState => ({...prevState, [cantidad]: event.target.value}));
     }
 
-    const handleSubmit = () => {
+    const handleSubmit = event => {
         try {
             SellProductService(codigo,data.cantidad);
           } catch (error) {
             console.log("error en SellProductService")
           }
+        event.preventDefault();
     }
 
     return (

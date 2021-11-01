@@ -8,8 +8,8 @@ export function AddProduct() {
         setData(prevState => ({...prevState, [name]: event.target.value}));
     }
 
-    const handleSubmit = () => {
-        
+    const handleSubmit = event => {
+      event.preventDefault();
     }
 
     return (
