@@ -36,9 +36,9 @@ export function ContentsTable() {
 
     const handleSubmit = event => {
         try {
-            SellProductService(selectedId, data.cantidad);
+            SellProductService(parseInt(selectedId), data.cantidad);
           } catch (error) {
-            console.log("error en SellProductService")
+            console.log("error en SellProductService", error)
           }
         action.setStock(GetEverything());
         status.count = status.count + 1;
@@ -77,7 +77,7 @@ export function ContentsTable() {
             </tr>
             {
                 contenidos.map(producto => {
-                    return <tr onClick = {select} id = {producto.codigo}>
+                    return <tr onClick = {select} id = {producto.id}>
                         <td>{producto.nombre}</td>
                         <td>{producto.precio}</td>
                         <td>{producto.cantidad}</td>
