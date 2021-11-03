@@ -2,7 +2,8 @@ function NewProductDTO(newName, newPrice, newQuantity) {
     return {
         nombre: newName,  
         precio: newPrice, 
-        cantidad: newQuantity
+        cantidad: newQuantity,
+        cantidadVendida: 0
     };
 };
 

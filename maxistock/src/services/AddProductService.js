@@ -10,7 +10,7 @@ function AddProductService(name, price, quantity) {
         throw new InvalidParametersException("Quantity cannot be below zero");
     }
 
-    var newProduct = NewProductDTO(name, price, quantity);
+    var newProduct = NewProductDTO(name, price, quantity, 0);
 
     AddProductDAO(newProduct);
 };

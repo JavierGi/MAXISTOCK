@@ -9,4 +9,12 @@ export function UpdateProductQuantityDAO(newQuantity, productCode) {
 
 };
 
+export function UpdateProductSellQuantityDAO(newQuantity, productCode) {
+
+  const producto = getProductByCode(productCode);
+  
+  updateProduct(producto, { cantidadVendida: newQuantity });
+
+};
+
 //module.exports = { UpdateProductQuantityDAO };

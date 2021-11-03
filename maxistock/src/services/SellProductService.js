@@ -1,6 +1,6 @@
 import { NewSaleDTO } from "../dtos/NewSaleDTO";
 import { AddSaleDAO } from "../dao/AddSaleDAO";
-import { UpdateProductQuantityDAO } from "../dao/UpdateProductQuantityDAO";
+import { UpdateProductQuantityDAO, UpdateProductSellQuantityDAO } from "../dao/UpdateProductQuantityDAO";
 import { GetProductByCode } from "./ContentsTableOrquestrator";
 import { InsufficientStockException } from "../exceptions/InsufficientStockException";
 import { InvalidParametersException } from "../exceptions/InvalidParametersException";
@@ -19,6 +19,7 @@ function SellProductService(code, quantity) {
     var newSale = NewSaleDTO(code, Date.now(), quantity)
 
     UpdateProductQuantityDAO((productToSell.cantidad - quantity), code)
+    UpdateProductSellQuantityDAO((parseInt(productToSell.cantidadVendida) + parseInt(quantity)), code)
     AddSaleDAO(newSale)
 };
 
