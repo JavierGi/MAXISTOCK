@@ -1,7 +1,7 @@
 import { use, connect, query, disconnect } from "./MySQLDAO";
 import { getProductByCode, updateProduct } from '../dao/StockDAO';
 
-function UpdateProductQuantityDAO(newQuantity, productCode) {
+export function UpdateProductQuantityDAO(newQuantity, productCode) {
 
   const producto = getProductByCode(productCode);
   
@@ -9,4 +9,4 @@ function UpdateProductQuantityDAO(newQuantity, productCode) {
 
 };
 
-module.exports = { UpdateProductQuantityDAO };
+//module.exports = { UpdateProductQuantityDAO };

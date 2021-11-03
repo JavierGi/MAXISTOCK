@@ -1,5 +1,5 @@
 import { NewProductDTO } from "../dtos/NewProductDTO";
-import { AddProductDAO } from "../dao/AddProductDAO";
+import { AddProductDAO , GetStockDAO } from "../dao/AddProductDAO";
 import { InvalidParametersException } from "../exceptions/InvalidParametersException";
 
 function AddProductService(name, price, quantity) {
@@ -15,4 +15,8 @@ function AddProductService(name, price, quantity) {
     AddProductDAO(newProduct);
 };
 
-export default AddProductService;
+function GetStockService(){
+  return GetStockDAO();
+}
+
+export { AddProductService, GetStockService };

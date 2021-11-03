@@ -1,8 +1,8 @@
 import { use, connect, query, disconnect } from "./MySQLDAO";
 import { add } from '../dao/VentasDAO';
 
-function AddSaleDAO(newSale) {
+export function AddSaleDAO(newSale) {
   add(newSale);
 };
 
-module.exports = { AddSaleDAO };
+//module.exports = { AddSaleDAO };

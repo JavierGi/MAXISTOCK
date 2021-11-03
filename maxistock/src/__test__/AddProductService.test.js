@@ -1,4 +1,4 @@
-import AddProductService from "../services/AddProductService";
+import { AddProductService } from "../services/AddProductService";
 import { InvalidParametersException } from "../exceptions/InvalidParametersException";
 
 
