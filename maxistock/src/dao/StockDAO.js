@@ -22,10 +22,12 @@ const updateProduct = (producto, update) => {
   Object.assign(producto, update);
 }
 
+const getStock = () => stock;
+
 
 add(new NewProductDTO('Gaseosa naranja', 10.00, 12));
 add(new NewProductDTO('Galletita Limon',  5.00, 15));
 add(new NewProductDTO('Agua mineral',     4.00, 20));
 add(new NewProductDTO('Caramelo acido',   1.00, 75));
 
-export { stock, truncateStock, add , getProductByCode , updateProduct };
+export { stock, truncateStock, add , getProductByCode , updateProduct , getStock };
