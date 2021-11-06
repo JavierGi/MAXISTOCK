@@ -1,17 +1,16 @@
 import { stock , getProductByCode } from '../dao/StockDAO';
 
-export function GetEverything() {
+function GetEverything() {
   return stock;
 };
 
-/*function GetMostBuyed() {
-    connect()
-    query("SELECT nombre, cantidad, precio FROM stock JOIN (SELECT * FROM ventas ORDER BY cantidad) ON codigo_producto = codigo")
-    disconnect()
-};*/
+function GetMostBuyed() {
+    //Nahuel conecta GetMostSoldProduct acá para no tocar el front
+    return [{nombre: "test1", precio: 20, cantidadVendida: 20}, {nombre: "test2", precio: 30, cantidadVendida: 15}, {nombre: "test3", precio: 20, cantidadVendida: 10}]
+};
 
-export function GetProductByCode(code) {
+function GetProductByCode(code) {
     return getProductByCode(code);
 };
 
-//module.exports = {GetEverything, GetProductByCode};
+export {GetEverything, GetProductByCode, GetMostBuyed};

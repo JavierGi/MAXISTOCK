@@ -23,11 +23,12 @@ export function ContentsTable() {
 
     function recuperarTodos() {
         setMostrando(false)
+        setContenidos(GetEverything())
     }
 
     function recuperarMasVendidos() {
         setMostrando(true)
-        //GetMostBuyed.then(res => setContenidos(res))
+        setContenidos(GetMostBuyed())
     }
 
     const test = () => {
