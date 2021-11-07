@@ -5,15 +5,15 @@ import { ProductWithSalesDTO } from "../dtos/ProductWithSalesDTO";
 function GetMostSoldProducts() {
     var ventas = getVentas();
 
-    var stockConVentas = getStock().map(prod => ProductWithSalesDTO(prod.nombre, prod.precio, prod.cantidad, 0));
+    var stockConVentas = getStock().map(prod => ProductWithSalesDTO(prod.id, prod.nombre, prod.precio, prod.cantidad, 0));
 
-    for (var venta in ventas) {
-        var producto = stockConVentas.find(prod => prod.codigo === venta.codigo);
-        var nuevaCantidadVenta = venta.cantidad + producto.ventas;
+    for (var position in ventas) {
+        var producto = stockConVentas.find(prod => prod.id === ventas[position].codigo);
+        var nuevaCantidadVenta = ventas[position].cantidad + producto.ventas;
 
         stockConVentas.find((prod, n) => {
-            if (prod.codigo === venta.codigo) {
-                stockConVentas[n] = ProductWithSalesDTO(prod.nombre, prod.precio, prod.cantidad, nuevaCantidadVenta);
+            if (prod.id === ventas[position].codigo) {
+                stockConVentas[n] = ProductWithSalesDTO(prod.id, prod.nombre, prod.precio, prod.cantidad, nuevaCantidadVenta);
             }
         });
     }
@@ -22,13 +22,7 @@ function GetMostSoldProducts() {
 }
 
 function compararVentas( prod1, prod2 ) {
-    if ( prod1.ventas > prod2.ventas ){
-      return -1;
-    }
-    if ( prod1.ventas < prod2.ventas ){
-      return 1;
-    }
-    return 0;
-  }
+    return prod2.ventas - prod1.ventas;
+}
 
 export default GetMostSoldProducts;
