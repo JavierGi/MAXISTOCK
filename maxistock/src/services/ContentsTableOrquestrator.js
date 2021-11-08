@@ -1,14 +1,16 @@
 import { stock , getProductByCode } from '../dao/StockDAO';
 import GetMostSoldProducts from "../services/GetMostSoldProducts";
 
-export function GetEverything() {
+function GetEverything() {
   return stock;
 };
 
-export function GetMostBuyed() {
+function GetMostBuyed() {
   return GetMostSoldProducts();
 };
 
-export function GetProductByCode(code) {
+function GetProductByCode(code) {
     return getProductByCode(code);
 };
+
+export {GetEverything, GetProductByCode, GetMostBuyed};
