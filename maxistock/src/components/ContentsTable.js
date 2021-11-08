@@ -90,7 +90,7 @@ export function ContentsTable() {
                     <tr onClick = {select} id = {producto.id}>
                         <td>{producto.nombre}</td>
                         <td>{producto.precio}</td>
-                        <td>{producto.cantidadVendida}</td>
+                        <td>{producto.ventas}</td>
                     </tr> :
                     <tr onClick = {select} id = {producto.id}>
                       <td>{producto.nombre}</td>
