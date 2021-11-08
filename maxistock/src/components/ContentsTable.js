@@ -80,7 +80,7 @@ export function ContentsTable() {
             </tr>
             {
                 contenidos.map(producto => {
-                    return <tr onClick = {select} id = {producto.id}>
+                    return <tr onClick = {select} id={producto.id} key={producto.id}>
                         <td>{producto.nombre}</td>
                         <td>{producto.precio}</td>
                         <td>{producto.cantidad}</td>
