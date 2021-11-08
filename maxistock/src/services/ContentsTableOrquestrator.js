@@ -10,7 +10,7 @@ function GetMostBuyed() {
 };
 
 function GetProductByCode(code) {
-    return getProductByCode(code);
+  return getProductByCode(code);
 };
 
 export {GetEverything, GetProductByCode, GetMostBuyed};

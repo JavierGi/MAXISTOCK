@@ -9,7 +9,7 @@ function GetMostSoldProducts() {
 
     for (var position in ventas) {
         var producto = stockConVentas.find(prod => prod.id === ventas[position].codigo);
-        var nuevaCantidadVenta = ventas[position].cantidad + producto.ventas;
+        var nuevaCantidadVenta = parseInt(ventas[position].cantidad) + parseInt(producto.ventas);
 
         stockConVentas.find((prod, n) => {
             if (prod.id === ventas[position].codigo) {
