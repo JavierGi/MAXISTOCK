@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useContext} from 'react';
 import { StatusContext } from '../components/StatusContext';
 import "./ContentsTable.css"
-import {GetEverything, GetMostBuyed} from '../services/ContentsTableOrquestrator';
+import {GetEverything, GetMostBuyed, GetLeastBuyed, GetSoldOutProducts} from '../services/ContentsTableOrquestrator';
 import SellProductService from '../services/SellProductService';
 
 export function ContentsTable() {
 
     const { status, action } = useContext(StatusContext);
-    const [mostrandoMasVendidos, setMostrando] = useState(false)
+    const [mostrando, setMostrando] = useState([false,false])
     const [contenidos, setContenidos] = useState(status.stock);
     const [selectedId, setSelectedId] = useState()
     const [data, setData] = useState({cantidad:""});
@@ -22,13 +22,23 @@ export function ContentsTable() {
     }
 
     function recuperarTodos() {
-        setMostrando(false)
+        setMostrando([false, false])
         setContenidos(GetEverything())
     }
 
     function recuperarMasVendidos() {
-        setMostrando(true)
+        setMostrando([true, true])
         setContenidos(GetMostBuyed())
+    }
+
+    function recuperarMenosVendidos() {
+        setMostrando([false, true])
+        setContenidos(GetLeastBuyed())
+    }
+
+    function recuperarSinStock() {
+      setMostrando([true, false])
+      setContenidos(GetSoldOutProducts())
     }
 
     const test = () => {
@@ -63,15 +73,22 @@ export function ContentsTable() {
 
       return(
         <div>
-        {
-           mostrandoMasVendidos ?
-           <button onClick={recuperarTodos}>Mostrar todos los productos</button> : 
-           <button onClick={recuperarMasVendidos}>Mostrar más vendidos</button>
-        }
+        <span>
+          <button onClick={recuperarTodos} disabled = {!mostrando[0] && !mostrando[1]}>Mostrar todos los productos</button> 
+          <button onClick={recuperarSinStock} disabled = {mostrando[0] && !mostrando[1]}>Mostrar productos sin stock</button> 
+          <button onClick={recuperarMenosVendidos} disabled = {!mostrando[0] && mostrando[1]}>Mostrar menos vendidos</button> 
+          <button onClick={recuperarMasVendidos} disabled = {mostrando[0] && mostrando[1]}>Mostrar más vendidos</button>
+        </span>
         <table border="1 px solid black" align="center" margin="5 px">
           <tbody>
             {
-              mostrandoMasVendidos ?
+              mostrando[0] && !mostrando[1] ?
+              <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Cantidad en stock</th>
+              </tr> :
+              mostrando[0] || mostrando[1] ?
               <tr>
                 <th>Nombre</th>
                 <th>Precio</th>
@@ -86,13 +103,19 @@ export function ContentsTable() {
             }
             {
                 contenidos.map(producto => {
-                    return mostrandoMasVendidos ?
-                    <tr onClick = {select} id = {producto.id}>
+                    return mostrando[0] && !mostrando[1] ?
+                    <tr id = {producto.id}>
+                    <td>{producto.nombre}</td>
+                    <td>{producto.precio}</td>
+                    <td>{producto.cantidad}</td>
+                    </tr> :
+                    mostrando[0] || mostrando[1] ?
+                    <tr>
                         <td>{producto.nombre}</td>
                         <td>{producto.precio}</td>
                         <td>{producto.ventas}</td>
                     </tr> :
-                    <tr onClick = {select} id = {producto.id}>
+                    <tr id = {producto.id}>
                       <td>{producto.nombre}</td>
                       <td>{producto.precio}</td>
                       <td>{producto.cantidad}</td>
@@ -103,7 +126,7 @@ export function ContentsTable() {
           </tbody>
         </table>
         {
-          mostrandoMasVendidos ?
+          mostrando[0] || mostrando[1] ?
           <div/> :
           <div className="RegisterSale"> 
               <form onSubmit={handleSubmit} className="box">    
