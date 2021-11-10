@@ -1,3 +1,7 @@
 .highlight {
     background-color: blueviolet;
 }
+
+.error {
+    color: red;
+}

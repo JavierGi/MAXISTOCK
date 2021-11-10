@@ -12,6 +12,7 @@ export function ContentsTable() {
     const [selectedId, setSelectedId] = useState()
     const [data, setData] = useState({cantidad:""});
     const [count, setCount] = useState(status.count);
+    const [error, setError] = useState("");
 
     useEffect(() => {
       setContenidos(status.stock);
@@ -24,21 +25,25 @@ export function ContentsTable() {
     function recuperarTodos() {
         setMostrando([false, false])
         setContenidos(GetEverything())
+        setSelectedId(null)
     }
 
     function recuperarMasVendidos() {
         setMostrando([true, true])
         setContenidos(GetMostBuyed())
+        setSelectedId(null)
     }
 
     function recuperarMenosVendidos() {
         setMostrando([false, true])
         setContenidos(GetLeastBuyed())
+        setSelectedId(null)
     }
 
     function recuperarSinStock() {
       setMostrando([true, false])
       setContenidos(GetSoldOutProducts())
+      setSelectedId(null)
     }
 
     const test = () => {
@@ -47,8 +52,10 @@ export function ContentsTable() {
 
     const handleSubmit = event => {
         try {
+            setError("");
             SellProductService(parseInt(selectedId), data.cantidad);
           } catch (error) {
+            setError(error.message);
             console.log("error en SellProductService", error)
           }
         action.setStock(GetEverything());
@@ -104,18 +111,18 @@ export function ContentsTable() {
             {
                 contenidos.map(producto => {
                     return mostrando[0] && !mostrando[1] ?
-                    <tr id = {producto.id}>
+                    <tr key={producto.id}>
                     <td>{producto.nombre}</td>
                     <td>{producto.precio}</td>
                     <td>{producto.cantidad}</td>
                     </tr> :
                     mostrando[0] || mostrando[1] ?
-                    <tr>
+                    <tr key={producto.id}>
                         <td>{producto.nombre}</td>
                         <td>{producto.precio}</td>
                         <td>{producto.ventas}</td>
                     </tr> :
-                    <tr id = {producto.id}>
+                    <tr id = {producto.id} key={producto.id}>
                       <td>{producto.nombre}</td>
                       <td>{producto.precio}</td>
                       <td>{producto.cantidad}</td>
@@ -129,7 +136,7 @@ export function ContentsTable() {
           mostrando[0] || mostrando[1] ?
           <div/> :
           <div className="RegisterSale"> 
-              <form onSubmit={handleSubmit} className="box">    
+              <form onSubmit={handleSubmit} className="box" noValidate>    
 
                   <input 
                   required 
@@ -139,11 +146,13 @@ export function ContentsTable() {
                   value={data.cantidad}
                   className="form-control" 
                   placeholder="Cantidad"
+                  noValidate
                   onChange={handleChange("cantidad")}/>
 
                   <button type="submit" disabled={selectedId==null}>
                       Vender
                   </button>
+                  <div className='error' >{error}</div>
               </form>
           </div>
         }
