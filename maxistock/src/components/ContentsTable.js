@@ -91,7 +91,7 @@ export function ContentsTable() {
           </tbody>
         </table>
         <div className="RegisterSale"> 
-            <form onSubmit={handleSubmit} className="box">    
+            <form onSubmit={handleSubmit} className="box" noValidate>    
 
                 <input 
                 required 
@@ -101,6 +101,7 @@ export function ContentsTable() {
                 value={data.cantidad}
                 className="form-control" 
                 placeholder="Cantidad"
+                noValidate
                 onChange={handleChange("cantidad")}/>
 
                 <button type="submit" disabled={selectedId==null}>
