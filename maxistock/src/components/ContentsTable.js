@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext} from 'react';
 import { StatusContext } from '../components/StatusContext';
 import "./ContentsTable.css"
 import {GetEverything, GetMostBuyed} from '../services/ContentsTableOrquestrator';
@@ -24,11 +24,12 @@ export function ContentsTable() {
 
     function recuperarTodos() {
         setMostrando(false)
+        setContenidos(GetEverything())
     }
 
     function recuperarMasVendidos() {
         setMostrando(true)
-        //GetMostBuyed.then(res => setContenidos(res))
+        setContenidos(GetMostBuyed())
     }
 
     const test = () => {
@@ -72,44 +73,62 @@ export function ContentsTable() {
         }
         <table border="1 px solid black" align="center" margin="5 px">
           <tbody>
-            <tr>
+            {
+              mostrandoMasVendidos ?
+              <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Cantidad vendida</th>
+              </tr> :
+              <tr>
                 <th>Nombre</th>
                 <th>Precio</th>
                 <th>Cantidad en stock</th>
                 <th>Seleccionar producto a vender</th>
-            </tr>
+              </tr>
+            }
             {
                 contenidos.map(producto => {
-                    return <tr onClick = {select} id={producto.id} key={producto.id}>
+                    return mostrandoMasVendidos ?
+                    <tr onClick = {select} id = {producto.id} key={producto.id}>
                         <td>{producto.nombre}</td>
                         <td>{producto.precio}</td>
-                        <td>{producto.cantidad}</td>
-                        <td><input type = "radio" name = "myRadio" onClick = {select}></input></td>
+                        <td>{producto.ventas}</td>
+                    </tr> :
+                    <tr onClick = {select} id = {producto.id}>
+                      <td>{producto.nombre}</td>
+                      <td>{producto.precio}</td>
+                      <td>{producto.cantidad}</td>
+                      <td><input type = "radio" name = "myRadio" onClick = {select}></input></td>
                     </tr>
                 })
             }
           </tbody>
         </table>
-        <div className="RegisterSale"> 
-            <form onSubmit={handleSubmit} className="box" noValidate>    
+        {
+          mostrandoMasVendidos ?
+          <div/> :
+          <div className="RegisterSale"> 
+              <form onSubmit={handleSubmit} className="box" noValidate>    
 
-                <input 
-                required 
-                type="number"
-                min="0"
-                name="cantidad"
-                value={data.cantidad}
-                className="form-control" 
-                placeholder="Cantidad"
-                noValidate
-                onChange={handleChange("cantidad")}/>
+                  <input 
+                  required 
+                  type="number"
+                  min="0"
+                  name="cantidad"
+                  value={data.cantidad}
+                  className="form-control" 
+                  placeholder="Cantidad"
+                  noValidate
+                  onChange={handleChange("cantidad")}/>
 
-                <button type="submit" disabled={selectedId==null}>
-                    Vender
-                </button>
-                <div className='error' >{error}</div>
-            </form>
-        </div>
+                  <button type="submit" disabled={selectedId==null}>
+                      Vender
+                  </button>
+                  <div className='error' >{error}</div>
+              </form>
+          </div>
+        }
         </div>
     )
 }
