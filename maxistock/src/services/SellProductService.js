@@ -7,13 +7,13 @@ import { InvalidParametersException } from "../exceptions/InvalidParametersExcep
 
 function SellProductService(code, quantity) {
     if (quantity <= 0) {
-        throw new InvalidParametersException("Quantity cannot be zero or less")
+        throw new InvalidParametersException("La cantidad no puede ser cero o menor")
     }
 
     var productToSell = GetProductByCode(code)
 
     if (productToSell.cantidad < quantity) {
-        throw new InsufficientStockException(`There is not enough stock of product ${code}`)
+        throw new InsufficientStockException(`No hay suficiente cantidad en stock de ${productToSell.nombre}`)
     }
 
     var newSale = NewSaleDTO(code, Date.now(), quantity)
