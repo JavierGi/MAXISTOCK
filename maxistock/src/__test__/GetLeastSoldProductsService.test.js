@@ -1,6 +1,6 @@
 import GetLeastSoldProductsService from "../services/GetLeastSoldProductsService";
 
-test('Get most sold products when there are 2 prods and 3 sells', () => {
+test('Get least sold products when there are 2 prods and 3 sells', () => {
     // arrange
     // we use what's already mocked
 
