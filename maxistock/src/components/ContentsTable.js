@@ -12,6 +12,7 @@ export function ContentsTable() {
     const [selectedId, setSelectedId] = useState()
     const [data, setData] = useState({cantidad:""});
     const [count, setCount] = useState(status.count);
+    const [error, setError] = useState("");
 
     useEffect(() => {
       setContenidos(status.stock);
@@ -37,8 +38,10 @@ export function ContentsTable() {
 
     const handleSubmit = event => {
         try {
+            setError("");
             SellProductService(parseInt(selectedId), data.cantidad);
           } catch (error) {
+            setError(error.message);
             console.log("error en SellProductService", error)
           }
         action.setStock(GetEverything());
@@ -87,7 +90,7 @@ export function ContentsTable() {
             {
                 contenidos.map(producto => {
                     return mostrandoMasVendidos ?
-                    <tr onClick = {select} id = {producto.id}>
+                    <tr onClick = {select} id = {producto.id} key={producto.id}>
                         <td>{producto.nombre}</td>
                         <td>{producto.precio}</td>
                         <td>{producto.ventas}</td>
@@ -106,7 +109,7 @@ export function ContentsTable() {
           mostrandoMasVendidos ?
           <div/> :
           <div className="RegisterSale"> 
-              <form onSubmit={handleSubmit} className="box">    
+              <form onSubmit={handleSubmit} className="box" noValidate>    
 
                   <input 
                   required 
@@ -116,11 +119,13 @@ export function ContentsTable() {
                   value={data.cantidad}
                   className="form-control" 
                   placeholder="Cantidad"
+                  noValidate
                   onChange={handleChange("cantidad")}/>
 
                   <button type="submit" disabled={selectedId==null}>
                       Vender
                   </button>
+                  <div className='error' >{error}</div>
               </form>
           </div>
         }
