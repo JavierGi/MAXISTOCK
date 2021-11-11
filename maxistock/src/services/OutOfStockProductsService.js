@@ -1,7 +1,7 @@
 import { getStock } from "../dao/StockDAO";
 
-function OutOfStockProductService() {
+function OutOfStockProductsService() {
     return getStock().filter(prod => prod.cantidad === 0);
 }
 
-export default OutOfStockProductService;
+export default OutOfStockProductsService;
